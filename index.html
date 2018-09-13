@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>web建设</title>
+    <link rel="stylesheet" href="css/bootstrap.icon.css">
+    <link rel="stylesheet" href="css/bootstrap.mins.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/underScore.js"></script>
+    <script src="js/vue.js"></script>
+
+</head>
+<body>
+<!-- header -->
+<header id='index-header'>
+    <div class="header-content">
+        <div class="top-bar hidden-sm hidden-xs text-warning">
+            <div class="container-fluid">
+                <div class="row text-center">
+                    <div class="top-bar-1 col-md-2">
+                        <a href="" class="text-warning">
+                            <i class="glyphicon glyphicon-send"></i>
+                            <span v-text="msg_wx"></span>
+                            <i class="glyphicon glyphicon-triangle-bottom"></i>
+                            <img :src="msg_wx_src" alt="">
+                        </a>
+                    </div>
+                    <div class="top-bar-2 col-md-4">
+                        <i class="glyphicon glyphicon-earphone"></i>
+                        <span v-text="msg_tel">  </span>
+                    </div>
+                    <div class="top-bar-3 col-md-2">
+
+                        <a :href="msg_url" class="text-warning">
+                            <img :src="msg_blog_src" alt="我的博客">
+                            <span v-text="msg_blog"></span>
+                        </a>
+                    </div>
+                    <div class="top-bar-4 col-md-4">
+                        <i class="glyphicon glyphicon-envelope"></i>
+                        <span v-text="msg_email">  </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="empty-1"></div>
+        <div id="index-header-content">
+            <div class="container-fluid">
+                <div class="text-center">
+                    <img :src="msg_log_src" alt="">
+                    <h2 class="title" v-text="msg_title"></h2>
+                    <h4 class="content" v-text="msg_content"></h4>
+                </div>
+                <div class="sign-button">
+
+                </div>
+            </div>
+        </div>
+        <div id="button">
+            <div class="dt pull-left">
+                <div class="half-left-circle"></div>
+            </div>
+
+            <div class="dd">
+                <a @click="click()">
+                    <div class="half-circle text-center">
+                        <i id="i-down" class="glyphicon" :class="dd_class"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="dt">
+                <div class="half-right-circle"></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- black -->
+    <div :class="canvas_class" class="container-fluid">
+        <div class="row text-center">
+            <canvas id="canvas">
+                <span v-text="msg_support"></span>
+            </canvas>
+        </div>
+    </div>
+</header>
+
+<!-- lunbo -->
+
+<!-- about -->
+
+<section id="index-about">
+    <div class="container">
+        <div class="row">
+            <div class="about-us text-center float-none col-md-12 "><h1 class="text-muted" v-text="msg_about_us"></h1>
+            </div>
+
+            <div class="bd-example bd-example-tabs container">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" v-for="title in titles">
+                        <a class="nav-link" :class="title.active" id="home-tab" data-toggle="tab" :href="title.href"
+                           role="tab" :aria-controls="title.aria_controls" :aria-selected="title.aria_selected"
+                           v-text="title.name"></a>
+                    </li>
+                </ul>
+                <div class="tab-content border-left border-bottom border-right" id="myTabs">
+                    <div class="tab-pane fade show  active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="about-div ">
+                            <div class="my-teams">
+                                <div class="row">
+                                    <div class="myteams-left-img text-center col-md-3">
+                                        <img :src="person.image" alt=""/>
+                                    </div>
+                                    <div class="myteams-info col-md-9">
+                                        <h1 class="name" v-text="person.name"></h1>
+                                        <h3 class="text-muted" v-text="person.job"></h3>
+                                        <p class="text-muted" v-html="person.info"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="about-div">
+                            <div class="my-flow">
+                                <div class="row">
+                                    <div v-for="image in flows" class="myflow-left-img text-center col-md-4">
+                                        <h3 v-text="image.msg"></h3>
+
+                                        <div class="info text-center">
+                                            <img :src="image.img" :alt="image.title">
+                                            <p class="" v-text="image.info"></p>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="about-div">
+                            <div class="my-promise">
+                                <div class="row">
+                                    <div v-for="image in promises" class="mypromise-left-img text-center col-md-6">
+                                        <img :src="image.img" alt="image.title">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product -->
+<section id="index-product">
+    <div class="container">
+        <div class="row ">
+            <div class="product-title text-center col-md-12">
+                <h2 v-text="msg_product"></h2>
+                <a href=""><h3 class="text-muted more-product float-right" v-text="msg_more"></h3></a>
+            </div>
+            <div class="container-fluid">
+                <div class="row text-center info">
+                    <div class="col-md-3 program text-center" v-for="image in images">
+                        <div class="card col-md-12">
+                            <img class="card-img-top" :src="image.img" :alt="alt">
+                            <div class="card-body">
+                                <h5 class="card-title" v-text="image.title"></h5>
+                                <p class="card-text" v-text="image.description"></p>
+                                <a :href="image.url" class="btn btn-primary" v-text="click"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- footer -->
+<footer id="index-footer">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i class="glyphicon glyphicon-earphone"></i>
+                <span v-text="msg_tel"></span>
+            </div>
+            <div class="col-md-4">
+                <a class="text-dark">
+                    <i class="glyphicon glyphicon-send"></i>
+                    <span v-text="msg_wx"> </span>
+                    <i class="glyphicon glyphicon-triangle-top"></i>
+                    <img v-bind:src="msg_wx_src" alt="">
+                </a>
+            </div>
+            <div class="col-md-4">
+                <i class="glyphicon glyphicon-envelope"></i>
+                <span v-text="msg_email">  </span>
+            </div>
+        </div>
+        <div class="row text-center v_info">
+            <div class="col-md-12" v-text="msg_info">
+            </div>
+            <div class="col-md-12" v-text="msg_web">
+            </div>
+
+        </div>
+    </div>
+</footer>
+<script src="js/index.js"></script>
+<script src="js/black.js"></script>
+</body>
+</html>
